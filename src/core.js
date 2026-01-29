@@ -48,23 +48,6 @@ if (!window.HexboardCore) {
       super(anchor, shapeOffsets);
       this.facing = facing;
     }
-
-    turnLeft() {
-      this.facing = HexDirections.left(this.facing);
-    }
-
-    turnRight() {
-      this.facing = HexDirections.right(this.facing);
-    }
-
-    moveForward() {
-      this.anchor = this.anchor.add(HexDirections.axial[this.facing]);
-    }
-
-    moveBackward() {
-      const backDir = HexDirections.opposite(this.facing);
-      this.anchor = this.anchor.add(HexDirections.axial[backDir]);
-    }
   }
 
   class HexMap {
