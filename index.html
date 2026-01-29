@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hexboard Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hud">
+        <h1>Hexboard</h1>
+        <p>Arrow keys: Up/Down move, Left/Right turn.</p>
+      </section>
+      <div id="debug" class="debug" aria-live="polite"></div>
+      <canvas id="board" width="900" height="650" aria-label="Hex board"></canvas>
+    </main>
+    <script>
+      const debugEl = document.getElementById("debug");
+      function appendDebug(message) {
+        const line = document.createElement("div");
+        line.textContent = message;
+        debugEl.appendChild(line);
+      }
+      window.addEventListener("error", (event) => {
+        appendDebug(`Error: ${event.message}`);
+      });
+      window.addEventListener("unhandledrejection", (event) => {
+        appendDebug(`Promise rejection: ${event.reason}`);
+      });
+      appendDebug("Debug ready.");
+    </script>
+    <script src="src/core.js"></script>
+    <script src="src/app.js?v=1"></script>
+  </body>
+</html>
